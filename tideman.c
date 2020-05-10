@@ -138,6 +138,18 @@ void record_preferences(int ranks[])
             preferences[winner][loser]++;
         }
     }
+
+    // print preferences
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            printf("%i ", preferences[i][j]);
+        }
+        printf("\n");
+    }
+
+
     return;
 }
 
@@ -209,6 +221,13 @@ void sort_pairs(void)
 
     }
 
+    // // print pairs
+    // for (int i = 0; i < pair_count; i++)
+    // {
+    //     printf("w: %i, l: %i\n", pairs[i].winner, pairs[i].loser);
+    // }
+
+
     return;
 }
 
@@ -227,6 +246,17 @@ void lock_pairs(void)
         }
     }
 
+    // // print locked
+    // for (int i = 0; i < pair_count; i++)
+    // {
+    //     for (int j = 0; j < pair_count; j++)
+    //     {
+    //         printf("%s ", locked[i][j] ? "true" : "false");
+    //     }
+    //     printf("\n");
+    // }
+
+
     return;
 }
 
@@ -234,7 +264,7 @@ void lock_pairs(void)
 void print_winner(void)
 {
     int source = find_source();
-    printf("%s", candidates[source]);
+    printf("%s\n", candidates[source]);
 
     return;
 }
