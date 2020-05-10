@@ -300,10 +300,10 @@ bool is_cycle(pair pair, int n)
 int find_source(void)
 {
     // if a candidate's column does not contain true, then it is the source
-    for (int l = 0; l < pair_count; l++)
+    for (int l = 0; l < candidate_count; l++)
     {
         int count_true = 0;
-        for (int w = 0; w < pair_count; w++)
+        for (int w = 0; w < candidate_count; w++)
         {
             if (locked[w][l])
             {
