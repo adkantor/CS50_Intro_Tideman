@@ -139,17 +139,6 @@ void record_preferences(int ranks[])
         }
     }
 
-    // // print preferences
-    // for (int i = 0; i < candidate_count; i++)
-    // {
-    //     for (int j = 0; j < candidate_count; j++)
-    //     {
-    //         printf("%i ", preferences[i][j]);
-    //     }
-    //     printf("\n");
-    // }
-
-
     return;
 }
 
@@ -195,7 +184,9 @@ void sort_pairs(void)
     for (int i = 0; i < pair_count; i++)
     {
         int ndx_highest = i;
-        int sov_highest = preferences[pairs[i].winner][pairs[i].loser] - preferences[pairs[i].loser][pairs[i].winner]; // strength-of-victory
+        // sov = strength-of-victory
+        int sov_highest = preferences[pairs[i].winner][pairs[i].loser] -
+                          preferences[pairs[i].loser][pairs[i].winner];
         for (int j = i + 1; j < pair_count; j++)
         {
             int sov_current = preferences[pairs[j].winner][pairs[j].loser] - preferences[pairs[j].loser][pairs[j].winner];
@@ -221,13 +212,6 @@ void sort_pairs(void)
 
     }
 
-    // // print pairs
-    // for (int i = 0; i < pair_count; i++)
-    // {
-    //     printf("w: %i, l: %i\n", pairs[i].winner, pairs[i].loser);
-    // }
-
-
     return;
 }
 
@@ -245,17 +229,6 @@ void lock_pairs(void)
             locked[pair.winner][pair.loser] = true;
         }
     }
-
-    // // print locked
-    // for (int i = 0; i < pair_count; i++)
-    // {
-    //     for (int j = 0; j < pair_count; j++)
-    //     {
-    //         printf("%s ", locked[i][j] ? "true" : "false");
-    //     }
-    //     printf("\n");
-    // }
-
 
     return;
 }
