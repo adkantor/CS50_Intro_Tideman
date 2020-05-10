@@ -33,7 +33,7 @@ void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
 void print_winner(void);
-bool is_cycle(pair pair);
+bool is_cycle(pair pair, int n);
 int find_source(void);
 
 int main(int argc, string argv[])
@@ -239,7 +239,7 @@ void lock_pairs(void)
         pair pair = pairs[i];
 
         // check for cycle (cycles are not allowed)
-        if (!is_cycle(pair))
+        if (!is_cycle(pair, i))
         {
             // lock pair
             locked[pair.winner][pair.loser] = true;
@@ -271,14 +271,15 @@ void print_winner(void)
 
 // Checks if new pair creates a cycle in graph.
 // @param pair      pair to investigate
+// @param n         pair is n-th pair in sorted list
 // @return          true if inserting pair would create cycle in the graph
-bool is_cycle(pair pair)
+bool is_cycle(pair pair, int n)
 {
     // there is a cycle if after inserting the node all columns of locked array contained a true value
-    for (int l = 0; l < pair_count; l++)
+    for (int l = 0; l <= n; l++)
     {
         int count_true = 0;
-        for (int w = 0; w < pair_count; w++)
+        for (int w = 0; w <= n; w++)
         {
             if ((locked[w][l]) || (pair.winner == w && pair.loser == l))
             {
